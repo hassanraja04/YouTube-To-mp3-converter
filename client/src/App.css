@@ -1,0 +1,200 @@
+.container {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  margin: 0px auto;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  background-color: #f8f8f8;
+  border: 1px solid;
+  border-color: #cccccc;
+  border-radius: 5px;
+  padding: 30px;
+  /* width: 100%; */
+  max-width: 500px;
+  gap: 20px;
+}
+
+/* background-color: #fff;
+color: #1D2528; */
+
+.input-wrapper {
+  flex: 1;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.4375em;
+  color: #1D2528;
+  font-family: Poppins,sans-serif;
+  background-color: white;
+}
+
+.input-wrapper input {
+  font: inherit; /* Use the inherited font */
+  letter-spacing: inherit;
+  border: 1px solid black; /* Keep the black border */
+  box-sizing: border-box; /* Include padding and border in width/height */
+  background: none;
+  height: 2.5em; /* Increase the height for better visibility */
+  padding: 10px 14px; /* Add padding for spacing */
+  width: 100%; /* Take full width of the input-wrapper */
+  margin: 0; /* Remove any default margin */
+  outline: none; /* Remove focus outline */
+  /* padding: 16.5px 14px; */
+}
+
+.button-wrapper button {
+  display: flex; /* Use flexbox to align content horizontally */
+  align-items: center; /* Center align text and icon vertically */
+  justify-content: center; /* Center align content horizontally */
+  font-weight: 500;
+  line-height: 1.75;
+  font-size: 16px;
+  color: white;
+  background-color: black;
+  border: none;
+  height: 2.5em;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  box-sizing: border-box;
+  padding: 0px 20px; /* Add padding to provide space around text and icon */
+  gap: 8px; /* Space between text and icon */
+  cursor: pointer; /* Pointer cursor */
+}
+
+button svg {
+  margin-left: 0px; /* Remove margin if added */
+  fill: white; /* Icon color */
+  width: 1.5em; /* Adjust the size as needed */
+  height: 1.5em; /* Adjust the size as needed */
+}
+
+.icon {
+  transition: transform 0.3s ease; /* Smooth transition when toggling animation */
+}
+
+.rotate-icon {
+  animation: rotate 1s linear infinite; /* Apply rotation animation */
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.converted-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  padding: 30px;
+  gap: 20px;
+  max-width: 500px;
+  margin: auto;
+}
+
+.input-container {
+  flex: 1;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.4375em;
+  color: #1D2528;
+  font-family: Poppins,sans-serif;
+  background-color: none;
+  width:100%;
+}
+
+.converted-view input {
+  font: inherit;
+  letter-spacing: inherit;
+  border: none;
+  box-sizing: border-box;
+  background: none;
+  height: 2.5em;
+  padding: 10px 14px;
+  width: 100%;
+  margin: 0;
+  outline: none;
+  border-radius: 5px;
+  margin-top: 0px;
+  font-family: Poppins, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgb(0, 0, 0);
+  font-size: 24px;
+  text-align: center;
+  padding-bottom: 16px;
+}
+
+.secondbtnwrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 25px;
+}
+
+.mp3btn button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: 500;
+  line-height: 1.75;
+  font-size: 16px;
+  color: white;
+  background-color: black;
+  border: none;
+  height: 2.5em;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  box-sizing: border-box;
+  padding: 0px 15px;
+  gap: 6px;
+}
+
+.convertbtn button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: 500;
+  line-height: 1.75;
+  font-size: 16px;
+  color: black;
+  background-color: white;
+  border: none;
+  height: 2.5em;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  box-sizing: border-box;
+  padding: 0px 15px;
+  gap: 6px;
+}
+
+.convertbtn svg {
+  fill: black;
+}
+
+button {
+  transition: box-shadow 0.3s ease;
+}
+
+button:hover {
+  box-shadow: 0px 5px 8px -2px rgba(0,0,0,0.3), 0px 5px 5px 0px rgba(0,0,0,0.2), 0px 3px 14px 2px rgba(0,0,0,0.15);
+}
