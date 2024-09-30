@@ -9,9 +9,9 @@ const app = express();
 app.use(express.json());
 
 // Enable CORS for frontend
-app.use(cors({
-  origin: 'https://youtubetomp3converter-woad.vercel.app'
-}));
+// app.use(cors({
+//   origin: 'https://youtubetomp3converter-woad.vercel.app'
+// }));
 
 
 app.get("/", (req, res) => {
