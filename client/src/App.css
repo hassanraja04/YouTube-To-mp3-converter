@@ -3,6 +3,12 @@
   height: 100%;
   box-sizing: border-box;
   margin: 0px auto;
+  background-color: white;
+  color: #3a4c54;
+}
+
+.container, .wrapper, .converted-view, .about, .special, .works, .test {
+  padding: 0 15px; 
 }
 
 .title {
@@ -10,6 +16,7 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 50px;
+  font-size: 25px;
 }
 
 .wrapper {
@@ -20,16 +27,12 @@
   margin: auto;
   background-color: #f8f8f8;
   border: 1px solid;
-  border-color: #cccccc;
+  border-color: rgb(208, 208, 208);
   border-radius: 5px;
   padding: 30px;
-  /* width: 100%; */
-  max-width: 500px;
+  max-width: 650px;
   gap: 20px;
 }
-
-/* background-color: #fff;
-color: #1D2528; */
 
 .input-wrapper {
   flex: 1;
@@ -42,50 +45,49 @@ color: #1D2528; */
 }
 
 .input-wrapper input {
-  font: inherit; /* Use the inherited font */
+  font: inherit; 
   letter-spacing: inherit;
-  border: 1px solid black; /* Keep the black border */
-  box-sizing: border-box; /* Include padding and border in width/height */
+  border: 1px solid #747fe0; 
+  box-sizing: border-box; 
   background: none;
-  height: 2.5em; /* Increase the height for better visibility */
-  padding: 10px 14px; /* Add padding for spacing */
-  width: 100%; /* Take full width of the input-wrapper */
-  margin: 0; /* Remove any default margin */
-  outline: none; /* Remove focus outline */
-  /* padding: 16.5px 14px; */
+  height: 2.5em;
+  padding: 10px 14px; 
+  width: 100%; 
+  margin: 0; 
+  outline: none; 
 }
 
 .button-wrapper button {
-  display: flex; /* Use flexbox to align content horizontally */
-  align-items: center; /* Center align text and icon vertically */
-  justify-content: center; /* Center align content horizontally */
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
   font-weight: 500;
   line-height: 1.75;
   font-size: 16px;
   color: white;
-  background-color: black;
+  background-color: #747fe0;
   border: none;
   height: 2.5em;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   box-sizing: border-box;
-  padding: 0px 20px; /* Add padding to provide space around text and icon */
-  gap: 8px; /* Space between text and icon */
-  cursor: pointer; /* Pointer cursor */
+  padding: 0px 20px; 
+  gap: 8px; 
+  cursor: pointer; 
 }
 
 button svg {
-  margin-left: 0px; /* Remove margin if added */
-  fill: white; /* Icon color */
-  width: 1.5em; /* Adjust the size as needed */
-  height: 1.5em; /* Adjust the size as needed */
+  margin-left: 0px; 
+  fill: white; 
+  width: 1.5em; 
+  height: 1.5em; 
 }
 
 .icon {
-  transition: transform 0.3s ease; /* Smooth transition when toggling animation */
+  transition: transform 0.3s ease; 
 }
 
 .rotate-icon {
-  animation: rotate 1s linear infinite; /* Apply rotation animation */
+  animation: rotate 1s linear infinite; 
 }
 
 @keyframes rotate {
@@ -107,7 +109,7 @@ button svg {
   border-radius: 5px;
   padding: 30px;
   gap: 20px;
-  max-width: 500px;
+  max-width: 650px;
   margin: auto;
 }
 
@@ -160,7 +162,7 @@ button svg {
   line-height: 1.75;
   font-size: 16px;
   color: white;
-  background-color: black;
+  background-color: #747fe0;
   border: none;
   height: 2.5em;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
@@ -177,7 +179,7 @@ button svg {
   font-weight: 500;
   line-height: 1.75;
   font-size: 16px;
-  color: black;
+  color: #747fe0;
   background-color: white;
   border: none;
   height: 2.5em;
@@ -188,7 +190,7 @@ button svg {
 }
 
 .convertbtn svg {
-  fill: black;
+  fill: #747fe0;
 }
 
 button {
@@ -197,4 +199,189 @@ button {
 
 button:hover {
   box-shadow: 0px 5px 8px -2px rgba(0,0,0,0.3), 0px 5px 5px 0px rgba(0,0,0,0.2), 0px 3px 14px 2px rgba(0,0,0,0.15);
+}
+
+.about {
+  /* max-width: 562px; */
+  margin: 50px auto;
+  box-sizing:content-box;
+  /* padding: 30px; */
+}
+
+.about h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 30px;
+}
+
+.about p {
+  font-size: 18px;
+}
+
+.special {
+  margin-bottom: 50px;
+  box-sizing:content-box;
+}
+
+.special h2 {
+  text-align: center;
+  font-size: 30px;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.card {
+  background-color: #fff;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card svg {
+  max-width: 60px;
+  margin-bottom: 15px;
+  height: 50px;
+}
+
+.card h3 {
+  font-size: 1.2rem;
+  margin: 15px 0;
+  color: #747fe0;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+.works {
+  margin: 50px auto;
+  box-sizing:content-box;
+}
+
+ol {
+  padding: 0;
+}
+
+li {
+  margin-bottom: 17px;
+  font-size: 18px;
+}
+
+.works h2 {
+  text-align: center;
+  font-size: 30px;
+}
+
+.footer {
+  margin: auto;
+  box-sizing:content-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer svg {
+  fill: #3a4c54;
+  height: 25px;
+  width: 25px;
+}
+
+.footer svg:hover {
+  fill: #747fe0;
+}
+
+.footer-left {
+  font-size: 14px;
+}
+
+.footer-right {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.test {
+  max-width: 900px;
+  margin: auto;
+}
+
+
+/* Media query for Phone */
+@media (max-width: 768px) {
+  .container, .wrapper, .converted-view, .about, .special, .works, .test {
+    padding: 0 15px; 
+  }
+
+  
+  .title {
+    margin-bottom: 30px;
+    padding: 0 10px; 
+    text-align: center;
+    font-size: 20px;
+  }
+
+  
+  .wrapper {
+    flex-direction: column;
+    padding: 30px;
+  }
+
+  .input-wrapper input {
+    font-size: 16px;
+    
+  }
+
+  
+  .button-wrapper, .secondbtnwrapper {
+    gap: 15px; 
+    flex-direction: row; 
+  }
+
+  .mp3btn button {
+    flex-direction: row;
+    font-size: 14px;
+  }
+
+  .convertbtn button {
+    flex-direction: row;
+    font-size: 14px;
+  }
+
+  .converted-view {
+    padding-bottom: 15px;
+  }
+
+  
+  .input-wrapper, .input-container, .button-wrapper button, .mp3btn button, .convertbtn button {
+    width: 100%; 
+  }
+
+  
+  .footer {
+    flex-direction: column; 
+    text-align: center; 
+    padding: 20px 15px; 
+  }
+
+  .footer-left {
+    margin-bottom: 10px; 
+  }
+
+  .cards-container {
+    grid-template-columns: 1fr; 
+  }
+
+  .card {
+    padding: 15px; 
+  }
 }
