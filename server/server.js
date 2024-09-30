@@ -13,6 +13,11 @@ app.use(cors({
   origin: 'https://youtubetomp3converter-woad.vercel.app'
 }));
 
+
+app.get("/", (req, res) => {
+  res.json("Hello")
+})
+
 // Helper function to clean and simplify YouTube links
 const cleanYouTubeLink = (link) => {
   return link.split('?')[0]; // Remove query parameters
