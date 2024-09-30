@@ -10,7 +10,7 @@ app.use(express.json());
 
 // Enable CORS for frontend
 app.use(cors({
-  origin: 'http://localhost:3000'
+  origin: 'https://youtubetomp3converter-woad.vercel.app'
 }));
 
 // Helper function to clean and simplify YouTube links
