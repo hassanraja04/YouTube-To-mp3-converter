@@ -122,5 +122,5 @@ app.listen(PORT, () => {
 });
 
 // module.exports = app;
-server.timeout = 300000;
+app.timeout = 300000;
 
