@@ -14,7 +14,7 @@ function App() {
     if (!link) return alert('Please enter a YouTube link');
     setLoading(true);
     try {
-      const response = await axios.post('https://you-tube-to-mp3-converter-ten.vercel.app/convert', { link });
+      const response = await axios.post('https://youtube-to-mp3-converter-backend.onrender.com/convert', { link });
       setTitle(response.data.title);
       setFilePath(response.data.path);
       setTimeout(() => {
@@ -32,7 +32,7 @@ function App() {
   const handleDownload = () => {
     const filename = title.trim() || 'audio';
     axios({
-      url: 'https://you-tube-to-mp3-converter-ten.vercel.app/download',
+      url: 'https://youtube-to-mp3-converter-backend.onrender.com/download',
       method: 'GET',
       params: {
         path: filePath,
@@ -57,7 +57,7 @@ function App() {
   // Function to reset the form for the next conversion
   const handleConvertNext = () => {
     // Request the server to delete the temporary file
-  axios.post('https://you-tube-to-mp3-converter-ten.vercel.app/clear')
+  axios.post('https://youtube-to-mp3-converter-backend.onrender.com/clear')
   .then(() => {
     setLink('');  // Clear YouTube link
     setTitle(''); // Clear title
