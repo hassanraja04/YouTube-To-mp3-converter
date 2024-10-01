@@ -1,26 +1,17 @@
 const express = require('express');
 const ytdl = require('ytdl-core');
-const youtubedl = require('yt-dlp-exec');
+const ffmpeg = require('fluent-ffmpeg');
 const path = require('path');
 const fs = require('fs');
 const cors = require('cors');
+const ffmpegPath = require('ffmpeg-static');
 
 const app = express();
 app.use(express.json());
 
-// Enable CORS for frontend
-// app.use(cors({
-//   origin: 'https://yt3-converter.vercel.app'
-// }));
-
 app.use(cors({
   origin: 'https://yt3-converter.vercel.app'
 }));
-
-
-app.get("/", (req, res) => {
-  res.json("Hello world")
-})
 
 // Helper function to clean and simplify YouTube links
 const cleanYouTubeLink = (link) => {
@@ -30,6 +21,7 @@ const cleanYouTubeLink = (link) => {
 // Variable to store the current temporary file path
 let tempFilePath = '';
 
+// Route to convert YouTube video to MP3
 app.post('/convert', async (req, res) => {
   const { link } = req.body;
   console.log(`Received link: ${link}`);
@@ -40,31 +32,33 @@ app.post('/convert', async (req, res) => {
     return res.status(400).send('Invalid YouTube link');
   }
 
-  // Get video info to extract the title
   try {
     const info = await ytdl.getInfo(cleanedLink);
     const title = info.videoDetails.title.replace(/[^a-zA-Z0-9 ]/g, ""); // Remove special characters from title
     tempFilePath = path.resolve(__dirname, `audio-${Date.now()}.mp3`);
 
-    // Use youtube-dl-exec to download and convert the video to mp3
-    await youtubedl(cleanedLink, {
-      output: tempFilePath,
-      extractAudio: true,
-      audioFormat: 'mp3',
-      audioQuality: '128k',
-      noPlaylist: true // Ensure it doesn't try to download playlists
-    });
-
-    console.log('Conversion finished, sending file to client');
-    if (fs.existsSync(tempFilePath)) {
-      // Send the file path and title back to the frontend
-      res.json({ path: tempFilePath, title });
-    } else {
-      console.log('File not found after conversion');
-      res.status(500).send('Error: file not found after conversion');
-    }
+    // Stream the video and convert to MP3 using FFmpeg
+    const audioStream = ytdl(cleanedLink, { filter: 'audioonly' });
+    const ffmpegProcess = ffmpeg(audioStream)
+      .setFfmpegPath(ffmpegPath)
+      .audioCodec('libmp3lame')
+      .audioBitrate('128k')
+      .save(tempFilePath)
+      .on('end', () => {
+        console.log('Conversion finished, sending file to client');
+        if (fs.existsSync(tempFilePath)) {
+          res.json({ path: tempFilePath, title });
+        } else {
+          console.log('File not found after conversion');
+          res.status(500).send('Error: file not found after conversion');
+        }
+      })
+      .on('error', (err) => {
+        console.error('Error during conversion:', err);
+        res.status(500).send('Error processing the video');
+      });
   } catch (error) {
-    console.error('youtube-dl error:', error);
+    console.error('Error processing video:', error);
     res.status(500).send('Error processing the video');
   }
 });
@@ -94,6 +88,7 @@ app.get('/download', (req, res) => {
   });
 });
 
+
 // Endpoint to clear the temporary file manually if needed
 app.post('/clear', (req, res) => {
   if (tempFilePath && fs.existsSync(tempFilePath)) {
@@ -111,16 +106,9 @@ app.post('/clear', (req, res) => {
   }
 });
 
-const exec = require('child_process').exec;
-exec('youtube-dl --version', (error, stdout, stderr) => {
-  console.log(`youtube-dl version: ${stdout}`);
-});
-
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
-// module.exports = app;
-app.timeout = 300000;
 
