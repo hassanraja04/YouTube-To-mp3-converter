@@ -1,6 +1,6 @@
 const express = require('express');
 const ytdl = require('ytdl-core');
-const youtubedl = require('youtube-dl-exec');
+const youtubedl = require('yt-dlp-exec');
 const path = require('path');
 const fs = require('fs');
 const cors = require('cors');
@@ -9,6 +9,10 @@ const app = express();
 app.use(express.json());
 
 // Enable CORS for frontend
+// app.use(cors({
+//   origin: 'https://yt3-converter.vercel.app'
+// }));
+
 app.use(cors({
   origin: 'https://yt3-converter.vercel.app'
 }));
@@ -105,6 +109,11 @@ app.post('/clear', (req, res) => {
   } else {
     res.send('No file to clear');
   }
+});
+
+const exec = require('child_process').exec;
+exec('youtube-dl --version', (error, stdout, stderr) => {
+  console.log(`youtube-dl version: ${stdout}`);
 });
 
 const PORT = process.env.PORT || 3001;
