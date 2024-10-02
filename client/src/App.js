@@ -240,7 +240,7 @@ function App() {
     if (!link) return alert('Please enter a YouTube link');
     setLoading(true);
     try {
-      const response = await axios.post('http://localhost:3001/convert', { link });
+      const response = await axios.post('https://youtube-to-mp3-converter-fm4b.onrender.com/convert', { link });
       setTitle(response.data.title);
       setFilePath(response.data.path);
       setTimeout(() => {
@@ -258,7 +258,7 @@ function App() {
   const handleDownload = () => {
     const filename = title.trim() || 'audio';
     axios({
-      url: 'http://localhost:3001/download',
+      url: 'https://youtube-to-mp3-converter-fm4b.onrender.com/download',
       method: 'GET',
       params: {
         path: filePath,
@@ -282,7 +282,7 @@ function App() {
 
   // Function to reset the form for the next conversion
   const handleConvertNext = () => {
-    axios.post('http://localhost:3001/clear', { title })
+    axios.post('https://youtube-to-mp3-converter-fm4b.onrender.com/clear', { title })
       .then(() => {
         setLink('');  // Clear YouTube link
         setTitle(''); // Clear title

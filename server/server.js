@@ -132,7 +132,7 @@ app.use(express.json());
 
 // Enable CORS for frontend
 app.use(cors({
-  origin: 'http://localhost:3000'
+  origin: 'https://yt3-converter.vercel.app'
 }));
 
 const s3Client = new S3Client({
